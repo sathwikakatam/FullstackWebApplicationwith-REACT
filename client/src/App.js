@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
 import './App.css';
+import Counter from "./Components/Counter";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends Component {
+   state=
+    {
+        first:0,
+        second:0,
+        third:0
+    };
+ increment=(key)=>{
+    
+    this.setState({
+       [key]:this.state[key]+1
+    });
+ 
+};
+ decrement=(key)=>{
+    
+    this.setState({
+        [key]:this.state[key]-1
+    });
+    
+};
+  render() {
+    return (
+      <div className="App" >
+<div className="App-header">
+        <Counter label="first" max={5} min={5} increment={this.increment} decrement={this.decrement} value={this.state.first}/>
+        <Counter label="second" max={4} min={4} increment={this.increment} decrement={this.decrement} value={this.state.second}/>
+        <Counter label="third" max={3} min={0} increment={this.increment} decrement={this.decrement} value={this.state.third}/>
 
+
+{
+  (
+    
+    this.state.second<0&&
+    this.state.third<0
+  )?
+  
+<p>All are less than 0 </p>:null
+  }
+  </div>
+      </div>
+    );
+  };
+};
 export default App;
