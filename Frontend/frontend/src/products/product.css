@@ -1,0 +1,22 @@
+.productss {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.productss img {
+    width: 400px;
+}
+
+.productss h3 {
+    font-family: Monaco, monospace;
+}
+
+.productss h6 {
+    font-family: "Courier New", monospace;
+}
+
+.productss h3,
+.productss h6 {
+    margin: 0 0 0.5rem 0;
+}
