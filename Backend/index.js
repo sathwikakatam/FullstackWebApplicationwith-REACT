@@ -1,10 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
 const mongo = require('mongoose');
-const userModel = require('./UserM').UserModel;
-const productModel = require('./Product').ProductModel;
+const userModel = require('./Model/User').UserModel;
+const productModel = require('./Model/Product').ProductModel;
 const db = require('./database').db;
 const port = 5000;
+app.use(cors())
 app.get('/product', async (req, res) => {
     const products = await productModel.find() || [];
     res.send(products);

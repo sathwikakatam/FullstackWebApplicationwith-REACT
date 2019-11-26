@@ -1,7 +1,7 @@
 var users = require('./data').users;
 var products = require('./data').products;
-var ProductModel = require('./Product').ProductModel;
-var UserModel = require('./UserM').UserModel;
+var ProductModel = require('./Model/Product').ProductModel;
+var UserModel = require('./Model/User').UserModel;
 //calling mongoose install mongoose with npm install mongoose
 var MongoClient = require('mongoose');
 //creating url where it has to host

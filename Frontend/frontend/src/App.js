@@ -3,53 +3,51 @@
 //import product2 from './products/images/product2.jpg';
 //import Product from './products/Product';
 import React, { Component } from 'react';
-import PrimaryButton from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
 //import products from './data/products';
 //import Input from  './Inputs/Input';
-import Forms from './Form/Forms';
-import Textfield from './Inputs/Textfiled';
-import Password from './Inputs/Password';
-import Checkbox from './Inputs/Checkbox';
+import FormDemo from './Pages/FormDemo';
+import Home from './Pages/Home';
+import PageNotFound from './Pages/PageNotFound';
+import Cart from './Pages/Cart';
+import Account from './Pages/Account';
+import Orders from './Pages/Orders';
+import Category from './Pages/Category';
+import NavigationBar from './Navigation/NavigationBar';
+
 class App extends Component {
-  // const images = [
-  //   product1, product2
-  // ];
-  state = {
-    FirstName: "",
-    LastName: "",
-    password: "",
-    sendemail: true
-  };
-  changehandle = e => {
-
-    this.setState({ [e.target.name]: e.target.value });
-
-  };
-  handleSubmit = e => {
-    console.log(this.state);
-    e.preventDefault()
-  }
-  changeChecked = e => {
-    this.setState({ [e.target.name]: e.target.checked });
-  };
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
-      <div className="App">
-        <header className="App-header">
-          {/* {products.map((products, index) => <Product key={products.id} {...products} pull={index % 2 == 0} /> */}
-          <Forms onSubmit={this.handleSubmit}>
-            <Textfield label="First Name" value={this.state.FirstName} name="FirstName" onChange={this.changehandle} />
-            <Textfield label="Second Name" value={this.state.LastName} name="LastName" onChange={this.changehandle} />
-            <Password label="Passowrd" value={this.state.password} name="password" onChange={this.changehandle} />
-            <Checkbox label="send email ?" checked={this.state.checked} name="sendemail" onChange={this.changeChecked} />
-            <PrimaryButton type='submit' onSubmit={this.handleSubmit} style={{ marginLeft: '10em', padding: '20px 30px 20px 30px', fontSize: '20px' }}>Submit</PrimaryButton>
 
-          </Forms>
-        </header>
-      </div >
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <NavigationBar isLogged={true} />
+
+            <Switch>
+
+              <Route path="/" exact component={Home}></Route>
+              <Route path="/cart" exact component={Cart}></Route>
+              <Route path="/orders" exact component={Orders}></Route>
+              <Route path="/account" exact component={Account}></Route>
+              <Route path="/category/:slug" exact component={Category}></Route>
+              <Route path="/forms" exact component={FormDemo}></Route>
+              <Route component={PageNotFound}></Route>
+
+            </Switch>
+          </header>
+        </div>
+      </Router>
+
+
+
+
     );
   };
 };
